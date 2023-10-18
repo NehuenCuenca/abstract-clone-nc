@@ -1,1 +1,5 @@
 /* RESOURCES: https://www.frontendpractice.com/projects/abstract */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
