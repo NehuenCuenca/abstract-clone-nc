@@ -61,8 +61,8 @@
     </form>
 
     <ul id="caracteristics-list"
-      class="w-full place-content-center py-44 min-[320px]:px-10 grid gap-y-16 grid-cols-1 md:grid-cols-2 auto-rows-auto items-start">
-      <li class="grid grid-cols-[.35fr_1fr] auto-rows-auto gap-5"
+      class="w-full place-content-center py-44 min-[320px]:px-10 xl:px-36 lg:px-28 md:px-16 grid gap-y-16 gap-x-5 grid-cols-1 md:grid-cols-2 auto-rows-auto items-start">
+      <li class="grid grid-cols-[.25fr_1fr] auto-rows-auto gap-5"
         v-for="(caracteristic, idxCaracteristic) in caracteristicImages" :key="idxCaracteristic">
         <img class="max-h-24" :src="caracteristic.image" alt="caracteristic">
         <div class="flex flex-col items-start gap-y-3 text-2xl">
@@ -73,8 +73,8 @@
       </li>
     </ul>
   </main>
-  <footer class="sm:w-full py-11 px-3 grid gap-10 min-[375px]:grid-cols-1 sm:grid-cols-2 bg-black text-white">
-    <div class="grid min-[375px]:grid-cols-2 min-[1150px]:grid-cols-4">
+  <footer class="sm:w-full py-11 px-16 grid gap-10 min-[375px]:grid-cols-1 sm:grid-cols-2 bg-black text-white">
+    <div class="grid min-[400px]:grid-cols-2 min-[1270px]:grid-cols-4 gap-5">
       <div class="flex flex-col">
         <span class="text-2xl font-bold">Abstract</span>
         <ul class="pt-3">
