@@ -64,7 +64,7 @@
       class="w-full place-content-center py-44 min-[320px]:px-10 xl:px-36 lg:px-28 md:px-16 grid gap-y-16 gap-x-5 grid-cols-1 md:grid-cols-2 auto-rows-auto items-start">
       <li class="grid grid-cols-[.25fr_1fr] auto-rows-auto gap-5"
         v-for="(caracteristic, idxCaracteristic) in caracteristicImages" :key="idxCaracteristic">
-        <img class="max-h-24" :src="caracteristic.image" alt="caracteristic">
+        <img class="max-h-24" :src="relativePathOfImage(caracteristic.image)" alt="caracteristic">
         <div class="flex flex-col items-start gap-y-3 text-2xl">
           <span class="font-bold">{{ caracteristic.title }}</span>
           <p>{{ caracteristic.description }}</p>
@@ -150,6 +150,11 @@ export default {
       }
     }
 
+    const relativePathOfImage = (name) => {
+      const pathUrlImage = new URL(`./assets/caracteristics/${name}`, import.meta.url).href
+      return pathUrlImage
+    }
+
     // LIFECYCLE
     onMounted(() => {
       addEventListener('resize', checkWidthWindow)
@@ -168,46 +173,47 @@ export default {
     // CONSTRAINTS
     const caracteristicImages = [
       {
-        image: "src/assets/caracteristics/branch.png",
+        image: "branch.png",
         title: "Using Abstract",
         description:
           "Abstract lets you manage, version, and document your designs in one place.",
       },
       {
-        image: "src/assets/caracteristics/two-people.png",
+        image: "two-people.png",
         title: "Manage your account",
         description:
           "Configure your account settings, such as your email, profile details, and password.",
       },
       {
-        image: "src/assets/caracteristics/puzzle.png",
+        image: "puzzle.png",
         title: "Manage organizations, teams, and projects",
         description:
           "Use Abstract organizations, teams, and projects to organize your people and your work.",
       },
       {
-        image: "src/assets/caracteristics/dollar-sign.png",
+        image: "dollar-sign.png",
         title: "Manage billing",
         description: "Change subscriptions and payment details.",
       },
       {
-        image: "src/assets/caracteristics/key.png",
+        image: "key.png",
         title: "Authenticate to Abstract",
         description:
           "Set up and configure SSO, SCIM, and Just-in-Time provisioning.",
       },
       {
-        image: "src/assets/caracteristics/message-sign.png",
+        image: "message-sign.png",
         title: "Abstract support",
         description: "Get in touch with a human.",
       },
     ];
 
+
     return {
       widthWindow,
       hamburgerMenuIsOpen,
       searchMenuIsOpen,
-      // toggleHamburguerMenu,
+      relativePathOfImage,
       toggleDisplayMenu,
       isOnMobileM,
       isOnLaptop,
