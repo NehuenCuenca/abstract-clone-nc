@@ -10,12 +10,13 @@
         <a href="#" class="hover:underline">Help Center</a>
       </div>
 
-      <div class="flex gap-x-4 items-center" v-if="isOnLaptop">
+      <div class="flex gap-x-4 items-center lg:hidden" >
         <button type="button" class="text-2xl" @click="toggleDisplayMenu('search')">🔍</button>
         <button type="button" class="text-2xl" @click="toggleDisplayMenu('hamburger')">{{ hamburgerMenuIsOpen ? '❌' : '🍔'
         }}</button>
       </div>
-      <div class="flex gap-x-4 items-center" v-else>
+
+      <div class="min-[320px]:hidden lg:flex gap-x-4 items-center ">
         <button type="button" class="py-2 px-5 text-2xl rounded-lg border border-white bg-neutral-900">
           Submit a request
         </button>
@@ -33,7 +34,7 @@
           ✖
         </button>
       </div>
-      <div :class="(!hamburgerMenuIsOpen && !isOnLaptop) ? 'hidden' : ''" class="py-5 flex flex-col justify-center">
+      <div class="py-5 flex flex-col justify-center lg:hidden" v-if="hamburgerMenuIsOpen" >
         <button type="button" class="py-2 px-5 text-2xl text-white">
           Submit a request
         </button>
@@ -46,8 +47,9 @@
   </header>
   
   <main class="sm:w-full">
-    <button class="py-3 px-6 rounded-3xl fixed z-50	bottom-3 right-5 bg-myIndigo text-white font-semibold " type="button">
-      ❔ {{ isOnLaptop ? '' : 'Help' }}
+    <button class="flex gap-1 py-3 px-6 rounded-3xl fixed z-50	bottom-3 right-5 bg-myIndigo text-white font-semibold " type="button">
+      <span>❔</span>
+      <span class="hidden lg:block">Help</span>
     </button>
     <form @submit.prevent class="py-32 gap-y-8 bg-myLigthPurple flex flex-col items-center w-full">
       <span class="text-2xl min-[320px]:text-4xl min-[500px]:text-5xl md:text-7xl font-semibold">How can we help?</span>
@@ -73,7 +75,7 @@
       </li>
     </ul>
   </main>
-  
+
   <footer class="sm:w-full py-11 px-16 grid gap-10 min-[375px]:grid-cols-1 sm:grid-cols-2 bg-black text-white">
     <div class="grid min-[400px]:grid-cols-2 min-[1270px]:grid-cols-4 gap-5">
       <div class="flex flex-col">
@@ -123,7 +125,7 @@
 </template>
 
 <script>
-import { computed, onMounted, ref, watch } from 'vue';
+import { onMounted, ref } from 'vue';
 
 export default {
   setup() {
@@ -160,15 +162,6 @@ export default {
     onMounted(() => {
       addEventListener('resize', checkWidthWindow)
       checkWidthWindow();
-    })
-
-    // COMPUTEDS
-    const isOnMobileM = computed(() => {
-      return (widthWindow.value <= 375) ? true : false
-    })
-
-    const isOnLaptop = computed(() => {
-      return (widthWindow.value <= 1024) ? true : false
     })
 
     // CONSTRAINTS
@@ -216,8 +209,6 @@ export default {
       searchMenuIsOpen,
       relativePathOfImage,
       toggleDisplayMenu,
-      isOnMobileM,
-      isOnLaptop,
       caracteristicImages,
     };
   },
