@@ -1,6 +1,6 @@
 <template>
   <header class="relative sm:w-full py-5 px-4 md:px-12 bg-black font-serif text-white	">
-    <nav class=" flex justify-between items-center flex-col min-[375px]:flex-row">
+    <nav class=" flex justify-between items-center flex-col lg:flex-row">
       <div class="flex gap-x-1 text-2xl">
         <div class="hover:opacity-80 hover:cursor-pointer">
           <i class="not-italic">🎈</i>
@@ -33,7 +33,7 @@
           ✖
         </button>
       </div>
-      <div :class="!hamburgerMenuIsOpen ? 'hidden' : ''" class="py-5 flex flex-col justify-center">
+      <div :class="(!hamburgerMenuIsOpen && !isOnLaptop) ? 'hidden' : ''" class="py-5 flex flex-col justify-center">
         <button type="button" class="py-2 px-5 text-2xl text-white">
           Submit a request
         </button>
@@ -42,11 +42,11 @@
           Sign in
         </button>
       </div>
-
     </nav>
   </header>
+  
   <main class="sm:w-full">
-    <button class="py-3 px-6 rounded-3xl fixed bottom-3 right-5 bg-myIndigo text-white font-semibold " type="button">
+    <button class="py-3 px-6 rounded-3xl fixed z-50	bottom-3 right-5 bg-myIndigo text-white font-semibold " type="button">
       ❔ {{ isOnLaptop ? '' : 'Help' }}
     </button>
     <form @submit.prevent class="py-32 gap-y-8 bg-myLigthPurple flex flex-col items-center w-full">
@@ -73,6 +73,7 @@
       </li>
     </ul>
   </main>
+  
   <footer class="sm:w-full py-11 px-16 grid gap-10 min-[375px]:grid-cols-1 sm:grid-cols-2 bg-black text-white">
     <div class="grid min-[400px]:grid-cols-2 min-[1270px]:grid-cols-4 gap-5">
       <div class="flex flex-col">
